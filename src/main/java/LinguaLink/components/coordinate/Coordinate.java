@@ -1,4 +1,4 @@
-package org.example.components.coordinate;
+package LinguaLink.components.coordinate;
 
 public class Coordinate {
     private int x;

@@ -1,9 +1,8 @@
-package org.example.components.connection;
+package LinguaLink.components.connection;
 
-import org.example.components.word.Word;
-import org.example.components.wordblock.WordBlock;
+import LinguaLink.components.wordblock.WordBlock;
 
-public class Connection implements IConnection {
+public class Connection {
     private final WordBlock from;
     private final WordBlock to;
 
@@ -12,17 +11,14 @@ public class Connection implements IConnection {
         this.to = to;
     }
 
-    @Override
     public WordBlock getFrom() {
         return from;
     }
 
-    @Override
     public WordBlock getTo() {
         return to;
     }
 
-    @Override
     public boolean isValid() {
         return false;
     }

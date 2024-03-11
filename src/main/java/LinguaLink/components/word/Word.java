@@ -1,4 +1,4 @@
-package org.example.components.word;
+package LinguaLink.components.word;
 
 public class Word {
     private String word;

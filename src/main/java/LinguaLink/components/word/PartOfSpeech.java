@@ -1,4 +1,4 @@
-package org.example.components.word;
+package LinguaLink.components.word;
 
 public enum PartOfSpeech {
     NOUN,
@@ -8,5 +8,6 @@ public enum PartOfSpeech {
     ADVERB,
     PREPOSITION,
     CONJUNCTION,
-    INTERJECTION
+    INTERJECTION,
+    ARTICLE
 }

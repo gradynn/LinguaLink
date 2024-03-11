@@ -1,11 +1,16 @@
-package org.example.components.wordblock;
+package LinguaLink.components.wordblock;
 
-import org.example.components.coordinate.Coordinate;
-import org.example.components.word.Word;
+import LinguaLink.components.coordinate.Coordinate;
+import LinguaLink.components.word.Word;
 
 public class WordBlock {
     private Coordinate position;
     private Word word;
+
+    public WordBlock(Coordinate p, Word w) {
+        this.position = p;
+        this.word = w;
+    }
 
     public Coordinate getPosition() {
         return new Coordinate(this.position.getX(), this.position.getY());

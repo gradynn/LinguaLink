@@ -1,4 +1,4 @@
-package org.example;
+package org.LinguaLink;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

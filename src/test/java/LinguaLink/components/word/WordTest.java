@@ -1,4 +1,4 @@
-package LinguaLink.word;
+package LinguaLink.components.word;
 
 import LinguaLink.components.word.Word;
 import LinguaLink.components.word.PartOfSpeech;

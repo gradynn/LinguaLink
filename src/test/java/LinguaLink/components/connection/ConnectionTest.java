@@ -1,4 +1,4 @@
-package LinguaLink.Connection;
+package LinguaLink.components.connection;
 
 import LinguaLink.components.connection.Connection;
 import LinguaLink.components.wordblock.WordBlock;

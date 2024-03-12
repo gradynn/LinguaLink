@@ -1,4 +1,4 @@
-package LinguaLink.views;
+package LinguaLink.uiComponents;
 
 import LinguaLink.components.word.PartOfSpeech;
 import LinguaLink.components.word.Word;
@@ -6,7 +6,6 @@ import LinguaLink.components.word.Word;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ComplexCellRenderer implements ListCellRenderer<Word> {
     @Override

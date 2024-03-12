@@ -10,7 +10,7 @@ public class WordBank {
     private static WordBank wordBank = null;
     private final ArrayList<Word> words;
 
-    public WordBank() {
+    private WordBank() {
         words = new ArrayList<>();
     }
 

@@ -1,6 +1,7 @@
 package LinguaLink.components.word;
 
 public class Word {
+    public static Object PartOfSpeech;
     private String word;
     private PartOfSpeech pos;
 

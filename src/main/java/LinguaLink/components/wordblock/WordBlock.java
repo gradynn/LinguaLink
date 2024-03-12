@@ -1,19 +1,19 @@
 package LinguaLink.components.wordblock;
 
-import LinguaLink.components.coordinate.Coordinate;
 import LinguaLink.components.word.Word;
+import java.awt.Point;
 
 public class WordBlock {
-    private Coordinate position;
+    private Point position;
     private Word word;
 
-    public WordBlock(Coordinate p, Word w) {
+    public WordBlock(Point p, Word w) {
         this.position = p;
         this.word = w;
     }
 
-    public Coordinate getPosition() {
-        return new Coordinate(this.position.getX(), this.position.getY());
+    public Point getPosition() {
+        return new Point(position.x, position.y);
     }
 
     public Word getWord() {
@@ -21,6 +21,6 @@ public class WordBlock {
     }
 
     public void setPosition(int x, int y) {
-        this.position = new Coordinate(x, y);
+        this.position = new Point(x, y);
     }
 }

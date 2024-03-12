@@ -3,7 +3,7 @@ package LinguaLink;
 import LinguaLink.logger.Logger;
 import LinguaLink.components.word.PartOfSpeech;
 import LinguaLink.components.word.Word;
-import LinguaLink.views.ComplexCellRenderer;
+import LinguaLink.uiComponents.ComplexCellRenderer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +13,7 @@ import java.util.List;
 
 public class App extends JFrame implements ModelObserver {
     private Model model;
+    private Controller controller;
     private JPanel wordBankPanel;
     private JPanel workSpacePanel;
     private DefaultListModel<Word> wordListRender;
@@ -21,6 +22,7 @@ public class App extends JFrame implements ModelObserver {
         super("Interactive Language Learning Tool");
         model = Model.getInstance();
         model.addObserver(this);
+        controller = Controller.getInstance();
         initUI();
     }
 
@@ -52,7 +54,7 @@ public class App extends JFrame implements ModelObserver {
         JMenuItem clearWordBank = new JMenuItem("Clear Word Bank");
         clearWordBank.addActionListener(e -> {
             wordListRender.clear();
-            model.clearWordBank();
+            controller.clearWordBank();
             Logger.info("WordBank cleared");
         });
         editMenu.add(clearWordBank);
@@ -83,7 +85,7 @@ public class App extends JFrame implements ModelObserver {
             PartOfSpeech selectedPos = (PartOfSpeech) partsOfSpeechDropdown.getSelectedItem();
             if (!wordText.isEmpty()) {
                 Word newWord = new Word(wordText, selectedPos);
-                Controller.addWordBankElement(newWord);
+                controller.addWordBankElement(newWord);
                 wordInput.setText(""); // Clear input field
             } else {
                 Logger.error("Empty word string could not be added to WordBank");

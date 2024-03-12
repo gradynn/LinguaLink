@@ -1,7 +1,10 @@
 package LinguaLink;
 
 import LinguaLink.components.word.Word;
+import LinguaLink.components.wordblock.WordBlock;
 import LinguaLink.containers.wordbank.WordBank;
+import LinguaLink.containers.workspace.WorkSpace;
+import LinguaLink.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,10 +13,13 @@ import java.util.List;
 public class Model {
     private static Model model = null;
     private WordBank wordBank;
+    private WorkSpace workSpace;
     private List<ModelObserver> observers = new ArrayList<>();
 
     private Model() {
-        wordBank = new WordBank();
+        wordBank = WordBank.getInstance();
+        workSpace = WorkSpace.getInstance();
+        Logger.info("New Model initialized.");
     }
 
     public static Model getInstance() {
@@ -21,6 +27,12 @@ public class Model {
             model = new Model();
         }
         return model;
+    }
+
+    public void resetInstance() {
+        wordBank.clearWords();
+        workSpace.clearWorkSpace();
+        observers.clear();
     }
 
     public void addObserver(ModelObserver observer) {
@@ -37,7 +49,6 @@ public class Model {
         }
     }
 
-    // Example method that would trigger observer notification
     public void addWordToBank(Word word) {
         wordBank.addWord(word);
         notifyObservers();
@@ -49,6 +60,13 @@ public class Model {
 
     public void clearWordBank() {
         wordBank.clearWords();
+        notifyObservers();
+    }
+
+    public void moveWordToWorkSpace(Word toMove) {
+        wordBank.removeWord(toMove);
+        workSpace.addWord(toMove);
+        notifyObservers();
     }
 
 }

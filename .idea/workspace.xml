@@ -5,21 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c2c329-c93f-4653-8c9b-3bdbaf7b25b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/ModelTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/1cbd4969-e5e0-497d-bbdd-c9947c2d55ef.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/268698ae77127e78.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/2ee022b2-184a-4fda-a967-620b04b36138.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/5ba5d11e-4771-4abd-97c3-885ad9d8a915.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/852d4a81-615a-4f1f-8f40-71548804799f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/8a3a92b2a24e2287e5932d4efd739ef6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/[[...default]]-2aa9a2caddc265ef.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/[gizmoId]-9afd2f4b5aa23ebc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/_app-3187c33521290733.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/_buildManifest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/_ssgManifest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/dgkjq2bp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/enforcement.f6478716f67eb008b598024953b7143d.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/enforcement.f6478716f67eb008b598024953b7143d.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/framework-d69d7cd8328ac368.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/game_core_bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/gpts-924f111208a6f092.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/main-173f4de37abd20dd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/polyfills-c67a75d1b6f99dc8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/saved_resource.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/vendor-d7c6038104ff2fa4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GPTLogs_files/webpack-56c7382f5eb810c2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/components/coordinate/Coordinate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/components/word/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/components/word/Word.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/components/wordblock/WordBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/components/wordblock/WordBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/wordbank/WordBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/wordbank/WordBank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/workspace/WorkSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/workspace/WorkSpace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/views/ComplexCellRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/uiComponents/ComplexCellRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/Connection/ConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/components/connection/ConnectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/Coordinate/CoordinateTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/word/WordTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/components/word/WordTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/wordblock/WordBlockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/components/wordblock/WordBlockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.bundle" beforeDir="false" afterPath="$PROJECT_DIR$/project.bundle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/report.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +49,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -178,7 +193,7 @@
       <workItem from="1710045161114" duration="1000" />
       <workItem from="1710045286522" duration="6544000" />
       <workItem from="1710128682921" duration="2020000" />
-      <workItem from="1710267174206" duration="7275000" />
+      <workItem from="1710267174206" duration="8189000" />
     </task>
     <servers />
   </component>

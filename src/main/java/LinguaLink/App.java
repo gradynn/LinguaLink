@@ -1,9 +1,11 @@
 package LinguaLink;
 
+import LinguaLink.components.wordblock.WordBlock;
 import LinguaLink.logger.Logger;
 import LinguaLink.components.word.PartOfSpeech;
 import LinguaLink.components.word.Word;
 import LinguaLink.uiComponents.ComplexCellRenderer;
+import LinguaLink.uiComponents.workSpacePanel.WorkSpacePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +17,7 @@ public class App extends JFrame implements ModelObserver {
     private Model model;
     private Controller controller;
     private JPanel wordBankPanel;
-    private JPanel workSpacePanel;
+    private WorkSpacePanel workSpacePanel;
     private DefaultListModel<Word> wordListRender;
 
     public App() {
@@ -106,10 +108,8 @@ public class App extends JFrame implements ModelObserver {
                 if (e.getClickCount() == 2) {
                     int index = wordList.locationToIndex(e.getPoint());
                     if (index >= 0) {
-                        // The item at 'index' was double-clicked
                         Word selectedWord = wordList.getModel().getElementAt(index);
-                        // Perform your desired action with the double-clicked item
-                        System.out.println("Double-clicked on: " + selectedWord.getWord());
+                        controller.moveWordToWorkSpace(selectedWord);
                     }
                 }
             }
@@ -136,12 +136,22 @@ public class App extends JFrame implements ModelObserver {
         return wordBankPanel;
     }
 
-    private void setupMainAndSideLayout() {
-        workSpacePanel = new JPanel();
-        workSpacePanel.setBackground(Color.BLACK);
+    private JPanel constructWorkSpace() {
+        WorkSpacePanel workSpacePanel = new WorkSpacePanel();
 
-        JPanel wordBank = constructWordBank();
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, workSpacePanel, wordBank);
+        for (WordBlock wordBlock : model.getWorkSpaceWordBlocks()) {
+            workSpacePanel.addWordBlock(wordBlock);
+        }
+
+        workSpacePanel.addWordBlock(new WordBlock(new Point(0, 0), new Word("Cat", PartOfSpeech.NOUN)));
+
+        return workSpacePanel;
+    }
+
+    private void setupMainAndSideLayout() {
+        wordBankPanel = constructWordBank();
+        workSpacePanel = (WorkSpacePanel) constructWorkSpace();
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, workSpacePanel, wordBankPanel);
         splitPane.setSize(1920, 1080);
         splitPane.setDividerLocation(0.8);
         splitPane.setOneTouchExpandable(false); // Disable the one-touch expandable buttons
@@ -169,9 +179,14 @@ public class App extends JFrame implements ModelObserver {
         Logger.info("WordBank updated.");
     }
 
-    // TODO: Implement this function. Will require going back and updating model.
     private void refreshWorkSpace() {
-        // Update workSpacePanel with new data
+        workSpacePanel.clearWordBlocks(); // Clear existing WordBlocks
+
+        for (WordBlock wordBlock : model.getWorkSpaceWordBlocks()) {
+            workSpacePanel.addWordBlock(wordBlock); // Add WordBlocks from the model
+        }
+
+        workSpacePanel.repaint();
     }
 
     public static void main(String[] args) {

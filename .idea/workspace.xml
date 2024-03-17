@@ -5,33 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c2c329-c93f-4653-8c9b-3bdbaf7b25b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/GPTLogs.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/1cbd4969-e5e0-497d-bbdd-c9947c2d55ef.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/268698ae77127e78.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/2ee022b2-184a-4fda-a967-620b04b36138.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/5ba5d11e-4771-4abd-97c3-885ad9d8a915.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/852d4a81-615a-4f1f-8f40-71548804799f.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/8a3a92b2a24e2287e5932d4efd739ef6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/[[...default]]-2aa9a2caddc265ef.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/[gizmoId]-9afd2f4b5aa23ebc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/_app-3187c33521290733.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/_buildManifest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/_ssgManifest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/dgkjq2bp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/enforcement.f6478716f67eb008b598024953b7143d.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/enforcement.f6478716f67eb008b598024953b7143d.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/framework-d69d7cd8328ac368.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/game_core_bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/gpts-924f111208a6f092.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/main-173f4de37abd20dd.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/polyfills-c67a75d1b6f99dc8.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/saved_resource.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/vendor-d7c6038104ff2fa4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GPTLogs_files/webpack-56c7382f5eb810c2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/exceptions/NonExistentWordBlockException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/exceptions/NonExistentWordException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/uiComponents/workSpacePanel/WorkSpacePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.bundle" beforeDir="false" afterPath="$PROJECT_DIR$/project.bundle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/report.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/workspace/WorkSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/workspace/WorkSpace.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,40 +46,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.App.executor": "Run",
-    "Application.AppCopy.executor": "Run",
-    "Application.LinguaLink.App.executor": "Run",
-    "JUnit.ConnectionTest.executor": "Run",
-    "JUnit.CoordinateTest.executor": "Run",
-    "JUnit.ModelTest.executor": "Run",
-    "JUnit.ModelTest.testAddObserver.executor": "Run",
-    "JUnit.ModelTest.testAddWordToBank.executor": "Run",
-    "JUnit.ModelTest.testSingletonBehavior.executor": "Run",
-    "JUnit.WordBlockTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/gradynnagle/School/ECS 160/Final Project/project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/Users/gradynnagle/School/ECS 160/Final Project/project/src/main/java/org/example/Main.java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppCopy.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LinguaLink.App.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ConnectionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CoordinateTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ModelTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ModelTest.testAddObserver.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ModelTest.testAddWordToBank.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ModelTest.testSingletonBehavior.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WordBlockTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/gradynnagle/School/ECS 160/Final Project/project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/gradynnagle/School/ECS 160/Final Project/project/src/main/java/org/example/Main.java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ModelTest.testAddWordToBank">
+  <component name="RunManager" selected="Application.LinguaLink.App">
     <configuration name="LinguaLink.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="LinguaLink.App" />
       <module name="project" />
@@ -161,10 +143,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LinguaLink.App" />
         <item itemvalue="JUnit.ModelTest.testAddWordToBank" />
         <item itemvalue="JUnit.ModelTest.testAddObserver" />
         <item itemvalue="JUnit.ModelTest.testSingletonBehavior" />
-        <item itemvalue="Application.LinguaLink.App" />
       </list>
     </recent_temporary>
   </component>
@@ -194,6 +176,7 @@
       <workItem from="1710045286522" duration="6544000" />
       <workItem from="1710128682921" duration="2020000" />
       <workItem from="1710267174206" duration="8189000" />
+      <workItem from="1710693390396" duration="7837000" />
     </task>
     <servers />
   </component>

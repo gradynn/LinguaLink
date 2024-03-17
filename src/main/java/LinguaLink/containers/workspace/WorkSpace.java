@@ -50,4 +50,8 @@ public class WorkSpace {
         WordBlock newWordBlock = new WordBlock(new Point(0, 0), word);
         graph.put(newWordBlock, new ArrayList<Connection>());
     }
+
+    public void removeWord(WordBlock wordBlock) {
+        graph.remove(wordBlock);
+    }
 }

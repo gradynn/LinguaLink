@@ -4,8 +4,8 @@ import LinguaLink.components.wordblock.WordBlock;
 import LinguaLink.logger.Logger;
 import LinguaLink.components.word.PartOfSpeech;
 import LinguaLink.components.word.Word;
-import LinguaLink.uiComponents.ComplexCellRenderer;
-import LinguaLink.uiComponents.workSpacePanel.WorkSpacePanel;
+import LinguaLink.guiComponents.ComplexCellRenderer;
+import LinguaLink.guiComponents.workSpacePanel.WorkSpacePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -142,8 +142,6 @@ public class App extends JFrame implements ModelObserver {
         for (WordBlock wordBlock : model.getWorkSpaceWordBlocks()) {
             workSpacePanel.addWordBlock(wordBlock);
         }
-
-        workSpacePanel.addWordBlock(new WordBlock(new Point(0, 0), new Word("Cat", PartOfSpeech.NOUN)));
 
         return workSpacePanel;
     }

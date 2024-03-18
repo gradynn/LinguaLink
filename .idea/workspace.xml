@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c2c329-c93f-4653-8c9b-3bdbaf7b25b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/exceptions/NonExistentWordBlockException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/exceptions/NonExistentWordException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/uiComponents/workSpacePanel/WorkSpacePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.bundle" beforeDir="false" afterPath="$PROJECT_DIR$/project.bundle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/workspace/WorkSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/workspace/WorkSpace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/uiComponents/ComplexCellRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/ComplexCellRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/uiComponents/workSpacePanel/WorkSpacePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/workSpacePanel/WorkSpacePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +172,7 @@
       <workItem from="1710045286522" duration="6544000" />
       <workItem from="1710128682921" duration="2020000" />
       <workItem from="1710267174206" duration="8189000" />
-      <workItem from="1710693390396" duration="7837000" />
+      <workItem from="1710693390396" duration="10415000" />
     </task>
     <servers />
   </component>

@@ -138,4 +138,7 @@ public class Model {
         notifyObservers();
     }
 
+    public void deleteWordBlock(WordBlock toDelete) {
+        workSpace.removeWord(toDelete);
+    }
 }

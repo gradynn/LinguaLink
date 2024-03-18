@@ -58,4 +58,8 @@ public class Controller {
         Point prevPosition = toSet.getPosition();
         toSet.setPosition(prevPosition.x + dx, prevPosition.y + dy);
     }
+
+    public void deleteWordBlock(WordBlock toDelete) {
+        model.deleteWordBlock(toDelete);
+    }
 }

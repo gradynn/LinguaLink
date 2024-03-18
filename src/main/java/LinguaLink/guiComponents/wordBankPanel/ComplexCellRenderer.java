@@ -1,4 +1,4 @@
-package LinguaLink.guiComponents;
+package LinguaLink.guiComponents.wordBankPanel;
 
 import LinguaLink.components.word.PartOfSpeech;
 import LinguaLink.components.word.Word;

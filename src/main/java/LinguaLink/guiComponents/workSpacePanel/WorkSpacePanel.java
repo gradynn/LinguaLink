@@ -48,11 +48,15 @@ public class WorkSpacePanel extends JPanel {
 					if (entry.getValue().contains(e.getPoint())) {
 						clickedBlock = entry.getKey();
 						clickedOnBlock = true;
-						lastDragPoint = e.getPoint();  // Set initial drag point
+						lastDragPoint = e.getPoint(); // Set initial drag point
 
-						// Select or drag the block
-						if (SwingUtilities.isLeftMouseButton(e)) {
-							if (e.isShiftDown() && firstSelectedBlock != null && clickedBlock != firstSelectedBlock) {
+					    if (SwingUtilities.isRightMouseButton(e)) {
+							selectedWordBlock = clickedBlock; // Update the selected block on right-click
+							createPopupMenu().show(WorkSpacePanel.this, e.getX(), e.getY());
+						} else if (SwingUtilities.isLeftMouseButton(e)) {
+							if (e.getClickCount() == 2) {
+								controller.moveWordToWordBank(clickedBlock);
+							} else if (e.isShiftDown() && firstSelectedBlock != null && clickedBlock != firstSelectedBlock) {
 								controller.addConnection(new Connection(firstSelectedBlock, clickedBlock));
 								firstSelectedBlock = null; // Reset for the next connection
 							} else {
@@ -61,23 +65,17 @@ public class WorkSpacePanel extends JPanel {
 								selectedWordBlock = clickedBlock; // For highlighting or other actions
 							}
 						}
-
-						// Show the popup menu on right click
-						if (SwingUtilities.isRightMouseButton(e)) {
-							createPopupMenu().show(WorkSpacePanel.this, e.getX(), e.getY());
-						}
-
 						break;
 					}
 				}
 
-				if (!clickedOnBlock) {
+				if (!clickedOnBlock && SwingUtilities.isLeftMouseButton(e)) {
 					selectedWordBlock = null;
 					firstSelectedBlock = null;
 					draggedWordBlock = null;
 				}
 
-				repaint();  // Repaint to update the workspace
+				repaint();
 			}
 
 			@Override

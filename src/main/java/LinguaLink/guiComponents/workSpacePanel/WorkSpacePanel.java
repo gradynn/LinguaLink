@@ -1,7 +1,9 @@
 package LinguaLink.guiComponents.workSpacePanel;
 
 import LinguaLink.Controller;
+import LinguaLink.Model;
 import LinguaLink.Util;
+import LinguaLink.components.connection.Connection;
 import LinguaLink.components.wordblock.WordBlock;
 import LinguaLink.logger.Logger;
 
@@ -10,8 +12,11 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class WorkSpacePanel extends JPanel {
@@ -19,11 +24,15 @@ public class WorkSpacePanel extends JPanel {
 	private WordBlock draggedWordBlock;
 	private Point lastDragPoint;
 	private Controller controller;
+	private Model model;
 	private WordBlock selectedWordBlock;
+	private WordBlock firstSelectedBlock;
 
 	public WorkSpacePanel() {
 		controller = Controller.getInstance();
+		model = Model.getInstance();
 		setBackground(Color.WHITE);
+		setFocusable(true);
 		setupMouseHandling();
 		createPopupMenu();
 	}
@@ -32,31 +41,43 @@ public class WorkSpacePanel extends JPanel {
 		MouseAdapter mouseAdapter = new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				requestFocusInWindow();
+				WordBlock clickedBlock = null;
 				boolean clickedOnBlock = false;
 				for (Map.Entry<WordBlock, Shape> entry : wordBlockShapes.entrySet()) {
 					if (entry.getValue().contains(e.getPoint())) {
+						clickedBlock = entry.getKey();
 						clickedOnBlock = true;
-						draggedWordBlock = entry.getKey();
-						selectedWordBlock = entry.getKey();
-						lastDragPoint = e.getPoint();
+						lastDragPoint = e.getPoint();  // Set initial drag point
+
+						// Select or drag the block
+						if (SwingUtilities.isLeftMouseButton(e)) {
+							if (e.isShiftDown() && firstSelectedBlock != null && clickedBlock != firstSelectedBlock) {
+								controller.addConnection(new Connection(firstSelectedBlock, clickedBlock));
+								firstSelectedBlock = null; // Reset for the next connection
+							} else {
+								firstSelectedBlock = clickedBlock;
+								draggedWordBlock = clickedBlock;
+								selectedWordBlock = clickedBlock; // For highlighting or other actions
+							}
+						}
 
 						// Show the popup menu on right click
 						if (SwingUtilities.isRightMouseButton(e)) {
-							createPopupMenu().show(e.getComponent(), e.getX(), e.getY());
+							createPopupMenu().show(WorkSpacePanel.this, e.getX(), e.getY());
 						}
+
 						break;
 					}
 				}
 
 				if (!clickedOnBlock) {
 					selectedWordBlock = null;
-					if (SwingUtilities.isRightMouseButton(e)) {
-						// Optionally show a general context menu for the workspace panel
-						// createGeneralPopupMenu().show(e.getComponent(), e.getX(), e.getY());
-					}
+					firstSelectedBlock = null;
+					draggedWordBlock = null;
 				}
 
-				repaint(); // Repaint to update the selection highlight
+				repaint();  // Repaint to update the workspace
 			}
 
 			@Override
@@ -103,10 +124,7 @@ public class WorkSpacePanel extends JPanel {
 		JMenuItem deleteItem = new JMenuItem("Delete");
 		deleteItem.addActionListener(e -> {
 			if (selectedWordBlock != null) {
-				wordBlockShapes.remove(selectedWordBlock);
-				controller.deleteWordBlock(selectedWordBlock);
-				selectedWordBlock = null; // Clear selection after deletion
-				repaint();
+				safeDeleteWordBlock(selectedWordBlock);
 			}
 		});
 
@@ -126,10 +144,27 @@ public class WorkSpacePanel extends JPanel {
 		repaint();
 	}
 
+	protected void safeDeleteWordBlock(WordBlock toDelete) {
+		wordBlockShapes.remove(selectedWordBlock);
+		controller.deleteWordBlock(selectedWordBlock);
+		selectedWordBlock = null;
+		repaint();
+	}
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+
+		// Draw connections
+		List<Connection> connectionList = model.getActiveConnections();
+		g2.setColor(Color.BLACK);
+		for (Connection conn : connectionList) {
+			Point fromPoint = getCenterPoint(wordBlockShapes.get(conn.getFrom()));
+			Point toPoint = getCenterPoint(wordBlockShapes.get(conn.getTo()));
+			g2.drawLine(fromPoint.x, fromPoint.y, toPoint.x, toPoint.y);
+		}
+
 		for (Map.Entry<WordBlock, Shape> entry : wordBlockShapes.entrySet()) {
 			WordBlock wordBlock = entry.getKey();
 			Shape shape = entry.getValue();
@@ -151,4 +186,12 @@ public class WorkSpacePanel extends JPanel {
 			}
 		}
 	}
+
+	private Point getCenterPoint(Shape shape) {
+		Rectangle2D bounds = shape.getBounds2D();
+		int centerX = (int) bounds.getCenterX();
+		int centerY = (int) bounds.getCenterY();
+		return new Point(centerX, centerY);
+	}
+
 }

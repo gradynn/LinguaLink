@@ -6,16 +6,19 @@ import LinguaLink.components.wordblock.WordBlock;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collections;
+import java.util.List;
 import java.awt.Point;
 
 public class WorkSpace {
     private static WorkSpace workSpace = null;
-    private Map<WordBlock, ArrayList<Connection>> graph;
+    private ArrayList<WordBlock> wordBlocks;
+    private ArrayList<Connection> connections;
+
 
     private WorkSpace() {
-        graph = new HashMap<>();
+        wordBlocks = new ArrayList<>();
+        connections = new ArrayList<>();
     }
 
     public static WorkSpace getInstance() {
@@ -26,32 +29,43 @@ public class WorkSpace {
     }
 
     public void clearWorkSpace() {
-        graph.clear();
+        connections.clear();
+        wordBlocks.clear();
     }
 
-    public ArrayList<WordBlock> getWordBlocks() {
-        return new ArrayList<>(graph.keySet());
+    public List<WordBlock> getWordBlocks() {
+        return Collections.unmodifiableList(wordBlocks);
     }
 
-    public ArrayList<Connection> getConnectionsFor(WordBlock wordBlock) {
-        return graph.getOrDefault(wordBlock, new ArrayList<>());
-    }
-
-    public boolean isValidW() {
-        for (ArrayList<Connection> connections : graph.values()) {
-            for (Connection c : connections) {
-                if (!c.isValid()) { return false; }
-            }
-        }
-        return true;
+    public List<Connection> getConnections() {
+        return Collections.unmodifiableList(connections);
     }
 
     public void addWord(Word word) {
         WordBlock newWordBlock = new WordBlock(new Point(0, 0), word);
-        graph.put(newWordBlock, new ArrayList<Connection>());
+        wordBlocks.add(newWordBlock);
     }
 
-    public void removeWord(WordBlock wordBlock) {
-        graph.remove(wordBlock);
+    public void removeWordBlock(WordBlock wordBlock) {
+        wordBlocks.remove(wordBlock);
+
+        // Collect connections to remove
+        List<Connection> toRemove = new ArrayList<>();
+        for (Connection c : connections) {
+            if (c.getFrom().equals(wordBlock) || c.getTo().equals(wordBlock)) {
+                toRemove.add(c);
+            }
+        }
+
+        // Remove the collected connections
+        connections.removeAll(toRemove);
+    }
+
+    public void removeConnection(Connection toDelete) {
+        connections.remove(toDelete);
+    }
+
+    public void addConnection(Connection toAdd) {
+        connections.add(toAdd);
     }
 }

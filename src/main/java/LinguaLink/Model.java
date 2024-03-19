@@ -1,5 +1,6 @@
 package LinguaLink;
 
+import LinguaLink.components.connection.Connection;
 import LinguaLink.components.word.Word;
 import LinguaLink.components.wordblock.WordBlock;
 import LinguaLink.containers.wordbank.WordBank;
@@ -132,13 +133,27 @@ public class Model {
         if (!workSpace.getWordBlocks().contains(toMove)) {
             throw new NonExistentWordBlockException();
         }
-        workSpace.removeWord(toMove);
+        workSpace.removeWordBlock(toMove);
         Word extractedWord = toMove.getWord();
         wordBank.addWord(extractedWord);
         notifyObservers();
     }
 
     public void deleteWordBlock(WordBlock toDelete) {
-        workSpace.removeWord(toDelete);
+        workSpace.removeWordBlock(toDelete);
+        notifyObservers();
+    }
+
+    public void addConnection(Connection toAdd) {
+        workSpace.addConnection(toAdd);
+    }
+
+    public void deleteConnection(Connection toDelete) {
+        workSpace.removeConnection(toDelete);
+        notifyObservers();
+    }
+
+    public List<Connection> getActiveConnections() {
+        return workSpace.getConnections();
     }
 }

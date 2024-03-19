@@ -1,5 +1,6 @@
 package LinguaLink;
 
+import LinguaLink.components.connection.Connection;
 import LinguaLink.components.wordblock.WordBlock;
 import LinguaLink.exceptions.NonExistentWordBlockException;
 import LinguaLink.exceptions.NonExistentWordException;
@@ -28,6 +29,11 @@ public class Controller {
     public void addWordBankElement(Word in) {
         model.addWordToBank(in);
         Logger.info(in.getPartOfSpeech() + " " + in.getWord() +  " added successfully to wordBank.");
+    }
+
+    public void addConnection(Connection c) {
+        model.addConnection(c);
+        Logger.info("Connection from " + c.getFrom().getWord().getWord() + " to " + c.getTo().getWord().getWord() + ".");
     }
 
     public void clearWordBank() {
@@ -61,5 +67,9 @@ public class Controller {
 
     public void deleteWordBlock(WordBlock toDelete) {
         model.deleteWordBlock(toDelete);
+    }
+
+    public void deleteConnection(Connection toDelete) {
+        model.deleteConnection(toDelete);
     }
 }

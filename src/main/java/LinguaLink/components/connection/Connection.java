@@ -22,4 +22,8 @@ public class Connection {
     public boolean isValid() {
         return false;
     }
+
+    public boolean contains(WordBlock wordBlock) {
+        return (from == wordBlock || to == wordBlock);
+    }
 }

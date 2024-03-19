@@ -5,16 +5,13 @@ import LinguaLink.Model;
 import LinguaLink.Util;
 import LinguaLink.components.connection.Connection;
 import LinguaLink.components.wordblock.WordBlock;
-import LinguaLink.logger.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -156,18 +153,29 @@ public class WorkSpacePanel extends JPanel {
 
 		// Draw connections
 		List<Connection> connectionList = model.getActiveConnections();
-		g2.setColor(Color.BLACK);
 		for (Connection conn : connectionList) {
 			Point fromPoint = getCenterPoint(wordBlockShapes.get(conn.getFrom()));
 			Point toPoint = getCenterPoint(wordBlockShapes.get(conn.getTo()));
+
+			if (conn.isValid()) {
+				g2.setStroke(new BasicStroke(5.0f));
+				g2.setColor(Color.BLACK);
+			} else {
+				g2.setStroke(new BasicStroke(10.0f));
+				g2.setColor(Color.RED);
+			}
+
 			g2.drawLine(fromPoint.x, fromPoint.y, toPoint.x, toPoint.y);
 		}
+
+		// Reset to default stroke for other graphics operations
+		g2.setStroke(new BasicStroke());
 
 		for (Map.Entry<WordBlock, Shape> entry : wordBlockShapes.entrySet()) {
 			WordBlock wordBlock = entry.getKey();
 			Shape shape = entry.getValue();
 
-			// Fill the shape with its background color
+			// Set color and fill shape for word blocks
 			g2.setColor(Util.getBackgroundColor(wordBlock.getWord().getPartOfSpeech()));
 			g2.fill(shape);
 
@@ -176,11 +184,12 @@ public class WorkSpacePanel extends JPanel {
 			g2.drawString(wordBlock.getWord().getWord(), (float) shape.getBounds().getX() + 5, (float) shape.getBounds().getY() + 20);
 			g2.drawString(wordBlock.getWord().getPartOfSpeech().toString(), (float) shape.getBounds().getX() + 5, (float) shape.getBounds().getY() + 40);
 
-			// If this is the selected word block, draw a highlight border around it
+			// Highlight if selected
 			if (wordBlock == selectedWordBlock) {
-				g2.setStroke(new BasicStroke(2)); // Set stroke width for the highlight
-				g2.setColor(Color.BLUE); // Highlight color
-				g2.draw(shape); // Draw the highlight around the shape
+				g2.setStroke(new BasicStroke(2)); // Set stroke width for highlight
+				g2.setColor(Color.BLUE); // Set highlight color
+				g2.draw(shape); // Draw highlight
+				g2.setStroke(new BasicStroke()); // Reset stroke after highlight
 			}
 		}
 	}

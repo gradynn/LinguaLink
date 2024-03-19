@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d3c2c329-c93f-4653-8c9b-3bdbaf7b25b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/components/connection/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/components/connection/Connection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/workSpacePanel/WorkSpacePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/workSpacePanel/WorkSpacePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +171,7 @@
       <workItem from="1710128682921" duration="2020000" />
       <workItem from="1710267174206" duration="8189000" />
       <workItem from="1710693390396" duration="12359000" />
-      <workItem from="1710815500956" duration="3676000" />
+      <workItem from="1710815500956" duration="8803000" />
     </task>
     <servers />
   </component>

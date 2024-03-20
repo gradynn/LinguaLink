@@ -110,18 +110,24 @@ public class Model {
         notifyObservers();
     }
 
+    public void clearWorkSpace() {
+        workSpace.clearWorkSpace();
+        notifyObservers();
+    }
+
     /**
      * Moves a Word from the WordBank to the WorkSpaces
      * @param toMove a Word object to remove from the WordBank and add to the WorkSpace.
      * @throws NonExistentWordException
      */
-    public void moveWordToWorkSpace(Word toMove) throws NonExistentWordException {
+    public WordBlock moveWordToWorkSpace(Word toMove, int x, int y) throws NonExistentWordException {
         if (!getWordBankWords().contains(toMove)) {
             throw new NonExistentWordException();
         }
         wordBank.removeWord(toMove);
-        workSpace.addWord(toMove);
+        WordBlock addedWordBlock = workSpace.addWord(toMove, x, y);
         notifyObservers();
+        return addedWordBlock;
     }
 
     /**

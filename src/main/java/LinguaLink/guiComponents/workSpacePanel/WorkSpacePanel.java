@@ -4,10 +4,14 @@ import LinguaLink.Controller;
 import LinguaLink.Model;
 import LinguaLink.Util;
 import LinguaLink.components.connection.Connection;
+import LinguaLink.components.word.Word;
 import LinguaLink.components.wordblock.WordBlock;
+import LinguaLink.guiComponents.wordTransferable.WordTransferable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Transferable;
+import java.awt.dnd.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
@@ -32,6 +36,36 @@ public class WorkSpacePanel extends JPanel {
 		setFocusable(true);
 		setupMouseHandling();
 		createPopupMenu();
+
+		setDropTarget(new DropTarget(this, DnDConstants.ACTION_COPY, new DropTargetListener() {
+			public void drop(DropTargetDropEvent dtde) {
+				try {
+					Transferable tr = dtde.getTransferable();
+					if (tr.isDataFlavorSupported(WordTransferable.WORD_FLAVOR)) {
+						Word word = (Word) tr.getTransferData(WordTransferable.WORD_FLAVOR);
+						Point dropPoint = dtde.getLocation(); // Get drop location
+						createWordBlockAtLocation(word, dropPoint);
+						dtde.acceptDrop(DnDConstants.ACTION_COPY);
+						dtde.dropComplete(true);
+					} else {
+						dtde.rejectDrop();
+					}
+				} catch (Exception ex) {
+					dtde.rejectDrop();
+				}
+				repaint();
+			}
+
+			public void dragEnter(DropTargetDragEvent dtde) {}
+			public void dragOver(DropTargetDragEvent dtde) {}
+			public void dropActionChanged(DropTargetDragEvent dtde) {}
+			public void dragExit(DropTargetEvent dte) {}
+		}, true, null));
+	}
+
+	private void createWordBlockAtLocation(Word word, Point location) {
+		WordBlock createdWordBlock = controller.moveWordToWorkSpace(word, location.x, location.y);
+		controller.setWordBlockPositionAbs(createdWordBlock, location.x, location.y);
 	}
 
 	private void setupMouseHandling() {
@@ -132,6 +166,14 @@ public class WorkSpacePanel extends JPanel {
 		RoundRectangle2D roundRect = new RoundRectangle2D.Double(
 				wordBlock.getPosition().x, wordBlock.getPosition().y, 100, 50, 10, 10);
 		wordBlockShapes.put(wordBlock, roundRect);
+		repaint();
+	}
+
+	public void addWordBlock(WordBlock wordBlock, int x, int y) {
+		RoundRectangle2D roundRect = new RoundRectangle2D.Double(
+				x, y, 100, 50, 10, 10);
+		wordBlockShapes.put(wordBlock, roundRect);
+		repaint();
 	}
 
 	public void clearWordBlocks() {

@@ -38,13 +38,30 @@ public class Controller {
 
     public void clearWordBank() {
         model.clearWordBank();
-        Logger.info("WordBank cleared successfully.");
+        Logger.info("WordBank cleared.");
     }
 
-    public void moveWordToWorkSpace(Word toMove) {
+    public void clearWorkSpace() {
+        model.clearWorkSpace();
+        Logger.info("WorkSpace cleared.");
+    }
+
+    public WordBlock moveWordToWorkSpace(Word toMove) {
         try {
-            model.moveWordToWorkSpace(toMove);
+            WordBlock createdWordBlock =  model.moveWordToWorkSpace(toMove, 0, 0);
             Logger.info("Word " + toMove.getWord() + " moved to work space.");
+            return createdWordBlock;
+        } catch (NonExistentWordException e) {
+            Logger.error("Cannot move word to work space from word bank. Word " + toMove.getWord() + " does not exist in word bank.");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public WordBlock moveWordToWorkSpace(Word toMove, int x, int y) {
+        try {
+            WordBlock createdWordBlock =  model.moveWordToWorkSpace(toMove, x, y);
+            Logger.info("Word " + toMove.getWord() + " moved to work space.");
+            return createdWordBlock;
         } catch (NonExistentWordException e) {
             Logger.error("Cannot move word to work space from word bank. Word " + toMove.getWord() + " does not exist in word bank.");
             throw new RuntimeException(e);
@@ -63,6 +80,10 @@ public class Controller {
     public void setWordBlockPosition(WordBlock toSet, int dx, int dy) {
         Point prevPosition = toSet.getPosition();
         toSet.setPosition(prevPosition.x + dx, prevPosition.y + dy);
+    }
+
+    public void setWordBlockPositionAbs(WordBlock toSet, int x, int y) {
+        toSet.setPosition(x, y);
     }
 
     public void deleteWordBlock(WordBlock toDelete) {

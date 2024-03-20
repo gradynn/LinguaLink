@@ -41,9 +41,14 @@ public class WorkSpace {
         return Collections.unmodifiableList(connections);
     }
 
-    public void addWord(Word word) {
-        WordBlock newWordBlock = new WordBlock(new Point(0, 0), word);
+    public WordBlock addWord(Word word, int x, int y) {
+        WordBlock newWordBlock = new WordBlock(new Point(x, y), word);
         wordBlocks.add(newWordBlock);
+        System.out.println("Words now in the models representation of WorkSpace:");
+        for (WordBlock w : wordBlocks) {
+            System.out.println(w.getWord().getWord());
+        }
+        return newWordBlock;
     }
 
     public void removeWordBlock(WordBlock wordBlock) {

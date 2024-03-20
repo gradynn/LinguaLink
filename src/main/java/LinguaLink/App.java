@@ -47,6 +47,9 @@ public class App extends JFrame implements ModelObserver {
         fileMenu.add(loadItem);
         fileMenu.add(new JSeparator());
         JMenuItem exportItem = new JMenuItem("Export");
+        exportItem.addActionListener(e -> {
+            Util.exportPanelAsImage(workSpacePanel);
+        });
         fileMenu.add(exportItem);
         fileMenu.add(new JSeparator());
         JMenuItem exitItem = new JMenuItem("Exit");
@@ -59,9 +62,13 @@ public class App extends JFrame implements ModelObserver {
         clearWordBank.addActionListener(e -> {
             wordListRender.clear();
             controller.clearWordBank();
-            Logger.info("WordBank cleared");
         });
         editMenu.add(clearWordBank);
+        JMenuItem clearWorkSpace = new JMenuItem("Clear Work Space");
+        clearWorkSpace.addActionListener(e -> {
+            controller.clearWorkSpace();
+        });
+        editMenu.add(clearWorkSpace);
         menuBar.add(editMenu);
 
         setJMenuBar(menuBar);
@@ -105,16 +112,13 @@ public class App extends JFrame implements ModelObserver {
     private void refreshWordBank() {
         List<Word> currentWords = model.getWordBankWords();
         wordBankPanel.refreshWordBank(currentWords);
-        Logger.info("WordBank updated.");
     }
 
     private void refreshWorkSpace() {
-        workSpacePanel.clearWordBlocks(); // Clear existing WordBlocks
-
+        workSpacePanel.clearWordBlocks();
         for (WordBlock wordBlock : model.getWorkSpaceWordBlocks()) {
             workSpacePanel.addWordBlock(wordBlock); // Add WordBlocks from the model
         }
-
         workSpacePanel.repaint();
     }
 

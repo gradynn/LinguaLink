@@ -2,11 +2,14 @@ package LinguaLink.guiComponents.wordBankPanel;
 
 import LinguaLink.components.word.PartOfSpeech;
 import LinguaLink.components.word.Word;
+import LinguaLink.guiComponents.wordTransferable.WordTransferable;
 import LinguaLink.logger.Logger;
 import LinguaLink.Controller;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -47,6 +50,22 @@ public class WordBankPanel extends JPanel {
 
 		wordListModel = new DefaultListModel<>();
 		wordList = new JList<>(wordListModel);
+
+		wordList.setDragEnabled(true);
+		wordList.setTransferHandler(new TransferHandler() {
+			@Override
+			protected Transferable createTransferable(JComponent c) {
+				JList<Word> list = (JList<Word>) c;
+				Word selectedWord = list.getSelectedValue();
+				return new WordTransferable(selectedWord);
+			}
+
+			@Override
+			public int getSourceActions(JComponent c) {
+				return TransferHandler.COPY;
+			}
+		});
+
 		wordList.setCellRenderer(new ComplexCellRenderer());
 		wordList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		wordList.addMouseListener(new MouseAdapter() {

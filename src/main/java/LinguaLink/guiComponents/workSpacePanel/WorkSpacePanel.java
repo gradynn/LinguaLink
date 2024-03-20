@@ -19,6 +19,7 @@ import java.awt.geom.RoundRectangle2D;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.awt.geom.Line2D;
 
 public class WorkSpacePanel extends JPanel {
 	private Map<WordBlock, Shape> wordBlockShapes = new HashMap<>();
@@ -27,6 +28,7 @@ public class WorkSpacePanel extends JPanel {
 	private Controller controller;
 	private Model model;
 	private WordBlock selectedWordBlock;
+	private Connection selectedConnection;
 	private WordBlock firstSelectedBlock;
 
 	public WorkSpacePanel() {
@@ -73,6 +75,26 @@ public class WorkSpacePanel extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				requestFocusInWindow();
+
+				Point clickPoint = e.getPoint();
+				selectedConnection = null;  // Deselect previous connection
+
+				// Check if clicked near a connection
+				for (Connection conn : model.getActiveConnections()) {
+					Point fromPoint = getCenterPoint(wordBlockShapes.get(conn.getFrom()));
+					Point toPoint = getCenterPoint(wordBlockShapes.get(conn.getTo()));
+
+					if (clickedNearLine(clickPoint, fromPoint, toPoint)) {
+						selectedConnection = conn;
+						break;
+					}
+				}
+
+				if (selectedConnection != null && SwingUtilities.isRightMouseButton(e)) {
+					createConnectionPopupMenu().show(WorkSpacePanel.this, e.getX(), e.getY());
+					return;
+				}
+
 				WordBlock clickedBlock = null;
 				boolean clickedOnBlock = false;
 				for (Map.Entry<WordBlock, Shape> entry : wordBlockShapes.entrySet()) {
@@ -138,6 +160,13 @@ public class WorkSpacePanel extends JPanel {
 		addMouseMotionListener(mouseAdapter); // Use the same adapter for motion events
 	}
 
+	private boolean clickedNearLine(Point click, Point lineStart, Point lineEnd) {
+		// Simple way: check if click is within a small rectangle around the line
+		// More complex: calculate distance from click to line segment
+		final int NEARBY_DISTANCE = 5;  // Adjust based on how close to the line a click is considered
+		return new Line2D.Float(lineStart, lineEnd).ptSegDist(click) <= NEARBY_DISTANCE;
+	}
+
 	private JPopupMenu createPopupMenu() {
 		JPopupMenu popupMenu = new JPopupMenu();
 
@@ -162,6 +191,22 @@ public class WorkSpacePanel extends JPanel {
 
 		return popupMenu;
 	}
+
+	private JPopupMenu createConnectionPopupMenu() {
+		JPopupMenu popupMenu = new JPopupMenu();
+		JMenuItem deleteConnectionItem = new JMenuItem("Delete Connection");
+		deleteConnectionItem.addActionListener(e -> {
+			if (selectedConnection != null) {
+				controller.deleteConnection(selectedConnection);
+				selectedConnection = null;  // Clear selection after deletion
+				repaint();
+			}
+		});
+
+		popupMenu.add(deleteConnectionItem);
+		return popupMenu;
+	}
+
 	public void addWordBlock(WordBlock wordBlock) {
 		RoundRectangle2D roundRect = new RoundRectangle2D.Double(
 				wordBlock.getPosition().x, wordBlock.getPosition().y, 100, 50, 10, 10);
@@ -199,7 +244,10 @@ public class WorkSpacePanel extends JPanel {
 			Point fromPoint = getCenterPoint(wordBlockShapes.get(conn.getFrom()));
 			Point toPoint = getCenterPoint(wordBlockShapes.get(conn.getTo()));
 
-			if (conn.isValid()) {
+			if (conn == selectedConnection){
+				g2.setStroke(new BasicStroke(10.0f));
+				g2.setColor(Color.BLUE);
+		    } else if (conn.isValid()) {
 				g2.setStroke(new BasicStroke(5.0f));
 				g2.setColor(Color.BLACK);
 			} else {

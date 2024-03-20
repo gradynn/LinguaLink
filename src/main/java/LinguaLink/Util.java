@@ -1,13 +1,18 @@
 package LinguaLink;
 
+import LinguaLink.components.connection.Connection;
 import LinguaLink.components.word.PartOfSpeech;
+import LinguaLink.components.word.Word;
+import LinguaLink.components.wordblock.WordBlock;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Util {
 	public static Color getBackgroundColor(PartOfSpeech pos) {
@@ -72,5 +77,71 @@ public class Util {
 				ex.printStackTrace();
 			}
 		}
+	}
+
+	public static void saveApplicationState(Model model) {
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("Save Work Space");
+		if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+			File file = fileChooser.getSelectedFile();
+			if (!file.getPath().toLowerCase().endsWith(".llws")) {
+				file = new File(file.getPath() + ".llws");
+			}
+
+			List<Word> wordBank = model.getWordBankWords();
+			List<WordBlock> workSpace = model.getWorkSpaceWordBlocks();
+			List<Connection> connections = model.getActiveConnections();
+
+			try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+				for (Word word : wordBank) {
+					writer.write("WordBank:" + word.getWord() + "," + word.getPartOfSpeech() + "\n");
+				}
+				for (WordBlock block : workSpace) {
+					writer.write("WorkSpace:" + block.getWord().getWord() + "," + block.getWord().getPartOfSpeech() + "," + block.getPosition().x + "," + block.getPosition().y + "\n");
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static void loadApplicationState(Model model) {
+		JFileChooser fileChooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("LinguaLink WorkSpace Files (*.llws)", "llws");
+		fileChooser.setFileFilter(filter);
+		fileChooser.setDialogTitle("Open Work Space");
+
+		List<Word> loadedWordBank = new ArrayList<>();
+		List<WordBlock> loadedWorkSpace = new ArrayList<>();
+
+		if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+			File file = fileChooser.getSelectedFile();
+			if (!file.getPath().toLowerCase().endsWith(".llws")) {
+				JOptionPane.showMessageDialog(null, "Invalid file type selected. Please select a .llws file.", "Invalid File Type", JOptionPane.ERROR_MESSAGE);
+				return; // Return empty lists if file type is incorrect
+			}
+
+			try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+				String line;
+				while ((line = reader.readLine()) != null) {
+					if (line.startsWith("WordBank:")) {
+						String[] details = line.substring("WordBank:".length()).split(",");
+						if (details.length == 2) {
+							loadedWordBank.add(new Word(details[0], PartOfSpeech.valueOf(details[1])));
+						}
+					} else if (line.startsWith("WorkSpace:")) {
+						String[] details = line.substring("WorkSpace:".length()).split(",");
+						if (details.length == 4) {
+							Word word = new Word(details[0], PartOfSpeech.valueOf(details[1]));
+							Point point = new Point(Integer.parseInt(details[2]), Integer.parseInt(details[3]));
+							loadedWorkSpace.add(new WordBlock(point, word));
+						}
+					}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		model.loadFromFile(loadedWordBank, loadedWorkSpace);
 	}
 }

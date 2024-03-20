@@ -103,4 +103,8 @@ public class WordBankPanel extends JPanel {
 			wordListModel.addElement(word);
 		}
 	}
+
+	public void clear() {
+		wordListModel.clear();
+	}
 }

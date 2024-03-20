@@ -162,4 +162,18 @@ public class Model {
     public List<Connection> getActiveConnections() {
         return workSpace.getConnections();
     }
+
+    public void loadFromFile(List<Word> newWordBank, List<WordBlock> newWorkSpace) {
+        wordBank.clearWords();
+        for (Word w : newWordBank) {
+            wordBank.addWord(w);
+        }
+
+        workSpace.clearWorkSpace();
+        for (WordBlock w : newWorkSpace) {
+            workSpace.addWord(w.getWord(), w.getPosition().x, w.getPosition().y);
+        }
+
+        notifyObservers();
+    }
 }

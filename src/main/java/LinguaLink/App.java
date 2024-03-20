@@ -42,8 +42,14 @@ public class App extends JFrame implements ModelObserver {
 
         JMenu fileMenu = new JMenu("File");
         JMenuItem saveItem = new JMenuItem("Save");
+        saveItem.addActionListener(e -> {
+            Util.saveApplicationState(model);
+        });
         fileMenu.add(saveItem);
         JMenuItem loadItem = new JMenuItem("Load");
+        loadItem.addActionListener(e -> {
+            Util.loadApplicationState(model);
+        });
         fileMenu.add(loadItem);
         fileMenu.add(new JSeparator());
         JMenuItem exportItem = new JMenuItem("Export");
@@ -60,7 +66,7 @@ public class App extends JFrame implements ModelObserver {
         JMenu editMenu = new JMenu("Edit");
         JMenuItem clearWordBank = new JMenuItem("Clear Word Bank");
         clearWordBank.addActionListener(e -> {
-            wordListRender.clear();
+            wordBankPanel.clear();
             controller.clearWordBank();
         });
         editMenu.add(clearWordBank);

@@ -110,6 +110,9 @@ public class Model {
         notifyObservers();
     }
 
+    /**
+     * Clears WorkSpace of all words.
+     */
     public void clearWorkSpace() {
         workSpace.clearWorkSpace();
         notifyObservers();
@@ -145,24 +148,46 @@ public class Model {
         notifyObservers();
     }
 
+    /**
+     * Deletes a WordBlock from the WorkSpace.
+     * @param toDelete WordBlock object to delete.
+     */
     public void deleteWordBlock(WordBlock toDelete) {
         workSpace.removeWordBlock(toDelete);
         notifyObservers();
     }
 
+    /**
+     * Adds a new connection between two WordBlocks to the WorkSpace.
+     * @param toAdd new connection object to add to the workspace.
+     */
     public void addConnection(Connection toAdd) {
         workSpace.addConnection(toAdd);
     }
 
+    /**
+     * Removes a specific connection from the workspace.
+     * @param toDelete a Connection object to be deleted.
+     */
     public void deleteConnection(Connection toDelete) {
         workSpace.removeConnection(toDelete);
         notifyObservers();
     }
 
+    /**
+     * Gets a list of all active connection in the WorkSpace.
+     * @return Unmodifiable list of Connections.
+     */
     public List<Connection> getActiveConnections() {
         return workSpace.getConnections();
     }
 
+    /**
+     * Takes a new application state, retrieved from a file, and uses it to repopulate the current application state
+     * with that loaded data.
+     * @param newWordBank List of Word objects representing a new WordBank state.
+     * @param newWorkSpace List of WordBlocks representing a new WorkSpace state.
+     */
     public void loadFromFile(List<Word> newWordBank, List<WordBlock> newWorkSpace) {
         wordBank.clearWords();
         for (Word w : newWordBank) {

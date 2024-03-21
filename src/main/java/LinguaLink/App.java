@@ -22,6 +22,9 @@ public class App extends JFrame implements ModelObserver {
     private WorkSpacePanel workSpacePanel;
     private DefaultListModel<Word> wordListRender;
 
+    /**
+     * Constructs the main application window and initializes the model, controller, and UI components.
+     */
     public App() {
         super("Interactive Language Learning Tool");
         model = Model.getInstance();
@@ -30,6 +33,9 @@ public class App extends JFrame implements ModelObserver {
         initUI();
     }
 
+    /**
+     * Initializes the user interface components and layout of the application.
+     */
     private void initUI() {
         // Get the screen size and determine the maximum allowable size
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -55,7 +61,9 @@ public class App extends JFrame implements ModelObserver {
         setupMainAndSideLayout();
     }
 
-
+    /**
+     * Sets up the menu bar with file and edit options for the application window.
+     */
     private void setupMenuBar() {
         JMenuBar menuBar = new JMenuBar();
 
@@ -99,10 +107,16 @@ public class App extends JFrame implements ModelObserver {
         setJMenuBar(menuBar);
     }
 
+    /**
+     * Constructs the word bank panel used in the application.
+     */
     private void constructWordBank() {
         wordBankPanel = new WordBankPanel();
     }
 
+    /**
+     * Constructs the workspace panel used in the application.
+     */
     private void constructWorkSpace() {
         workSpacePanel = new WorkSpacePanel();
 
@@ -111,6 +125,9 @@ public class App extends JFrame implements ModelObserver {
         }
     }
 
+    /**
+     * Sets up the main layout of the application, including the word bank and workspace panels.
+     */
     private void setupMainAndSideLayout() {
         // Initialize the panels
         constructWordBank();
@@ -125,6 +142,9 @@ public class App extends JFrame implements ModelObserver {
         getContentPane().add(splitPane, BorderLayout.CENTER);
     }
 
+    /**
+     * Updates the application's UI in response to changes in the model's state.
+     */
     @Override
     public void update() {
         // Refresh UI components based on the updated model
@@ -132,11 +152,17 @@ public class App extends JFrame implements ModelObserver {
         refreshWorkSpace();
     }
 
+    /**
+     * Refreshes the word bank panel with the latest words from the model.
+     */
     private void refreshWordBank() {
         List<Word> currentWords = model.getWordBankWords();
         wordBankPanel.refreshWordBank(currentWords);
     }
 
+    /**
+     * Refreshes the workspace panel with the latest word blocks from the model.
+     */
     private void refreshWorkSpace() {
         workSpacePanel.clearWordBlocks();
         for (WordBlock wordBlock : model.getWorkSpaceWordBlocks()) {
@@ -145,6 +171,10 @@ public class App extends JFrame implements ModelObserver {
         workSpacePanel.repaint();
     }
 
+    /**
+     * The main method to run the application.
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new App().setVisible(true));
     }

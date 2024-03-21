@@ -9,6 +9,15 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ComplexCellRenderer implements ListCellRenderer<Word> {
+    /**
+     * Defines custom render logic for JList elements representing the WordBank.
+     * @param list The JList we're painting.
+     * @param word The value returned by list.getModel().getElementAt(index).
+     * @param index The cells index.
+     * @param isSelected True if the specified cell was selected.
+     * @param cellHasFocus True if the specified cell has the focus.
+     * @return
+     */
     @Override
     public Component getListCellRendererComponent(
             JList<? extends Word> list, Word word, int index, boolean isSelected, boolean cellHasFocus) {

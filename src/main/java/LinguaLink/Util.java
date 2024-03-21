@@ -15,6 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Util {
+	/**
+	 * Returns the background color associated with a given part of speech.
+	 * @param pos The part of speech for which the background color is needed.
+	 * @return The background color for the specified part of speech.
+	 */
 	public static Color getBackgroundColor(PartOfSpeech pos) {
 		return switch (pos) {
 			case NOUN -> new Color(0, 95, 115);
@@ -29,6 +34,11 @@ public class Util {
 		};
 	}
 
+	/**
+	 * Returns the primary text color for a given part of speech.
+	 * @param pos The part of speech for which the primary text color is needed.
+	 * @return The primary text color for the specified part of speech.
+	 */
 	public static Color getPrimaryTextColor(PartOfSpeech pos) {
 		ArrayList<PartOfSpeech> lightColors = new ArrayList<>();
 		lightColors.add(PartOfSpeech.PRONOUN);
@@ -37,6 +47,11 @@ public class Util {
 		return Color.WHITE;
 	}
 
+	/**
+	 * Returns the secondary text color for a given part of speech.
+	 * @param pos The part of speech for which the secondary text color is needed.
+	 * @return The secondary text color for the specified part of speech.
+	 */
 	public static Color getSecondaryTextColor(PartOfSpeech pos) {
 		ArrayList<PartOfSpeech> lightColors = new ArrayList<>();
 		lightColors.add(PartOfSpeech.PRONOUN);
@@ -45,6 +60,10 @@ public class Util {
 		return Color.LIGHT_GRAY;
 	}
 
+	/**
+	 * Exports a JPanel as an image file, allowing the user to save it to their system.
+	 * @param panel The JPanel to export as an image.
+	 */
 	public static void exportPanelAsImage(JPanel panel) {
 		// 1. Capture the JPanel contents as an image
 		BufferedImage image = new BufferedImage(panel.getWidth(), panel.getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -79,6 +98,10 @@ public class Util {
 		}
 	}
 
+	/**
+	 * Saves the current application state to a file, including word bank and workspace elements.
+	 * @param model The model containing the current application state.
+	 */
 	public static void saveApplicationState(Model model) {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle("Save Work Space");
@@ -105,6 +128,10 @@ public class Util {
 		}
 	}
 
+	/**
+	 * Loads the application state from a file, updating the word bank and workspace elements.
+	 * @param model The model to update with the loaded application state.
+	 */
 	public static void loadApplicationState(Model model) {
 		JFileChooser fileChooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("LinguaLink WorkSpace Files (*.llws)", "llws");

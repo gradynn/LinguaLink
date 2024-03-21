@@ -31,6 +31,9 @@ public class WorkSpacePanel extends JPanel {
 	private Connection selectedConnection;
 	private WordBlock firstSelectedBlock;
 
+	/**
+	 * Constructs a WorkSpacePanel and initializes its components and event handling.
+	 */
 	public WorkSpacePanel() {
 		controller = Controller.getInstance();
 		model = Model.getInstance();
@@ -65,11 +68,19 @@ public class WorkSpacePanel extends JPanel {
 		}, true, null));
 	}
 
+	/**
+	 * Creates a WordBlock at a specific location on the workspace.
+	 * @param word     The word to be placed in the workspace.
+	 * @param location The location where the word block should be created.
+	 */
 	private void createWordBlockAtLocation(Word word, Point location) {
 		WordBlock createdWordBlock = controller.moveWordToWorkSpace(word, location.x, location.y);
 		controller.setWordBlockPositionAbs(createdWordBlock, location.x, location.y);
 	}
 
+	/**
+	 * Sets up mouse handling for the workspace panel, including clicking, dragging, and releasing actions.
+	 */
 	private void setupMouseHandling() {
 		MouseAdapter mouseAdapter = new MouseAdapter() {
 			@Override
@@ -160,6 +171,13 @@ public class WorkSpacePanel extends JPanel {
 		addMouseMotionListener(mouseAdapter); // Use the same adapter for motion events
 	}
 
+	/**
+	 * Checks if a click event is near a line, used to detect click events near connections.
+	 * @param click      The point where the mouse was clicked.
+	 * @param lineStart  The starting point of the line.
+	 * @param lineEnd    The ending point of the line.
+	 * @return true if the click was near the line, false otherwise.
+	 */
 	private boolean clickedNearLine(Point click, Point lineStart, Point lineEnd) {
 		// Simple way: check if click is within a small rectangle around the line
 		// More complex: calculate distance from click to line segment
@@ -167,6 +185,10 @@ public class WorkSpacePanel extends JPanel {
 		return new Line2D.Float(lineStart, lineEnd).ptSegDist(click) <= NEARBY_DISTANCE;
 	}
 
+	/**
+	 * Creates a popup menu for the workspace panel.
+	 * @return A JPopupMenu object for the workspace.
+	 */
 	private JPopupMenu createPopupMenu() {
 		JPopupMenu popupMenu = new JPopupMenu();
 
@@ -192,6 +214,10 @@ public class WorkSpacePanel extends JPanel {
 		return popupMenu;
 	}
 
+	/**
+	 * Creates a popup menu for managing connections in the workspace panel.
+	 * @return A JPopupMenu object specific for connections.
+	 */
 	private JPopupMenu createConnectionPopupMenu() {
 		JPopupMenu popupMenu = new JPopupMenu();
 		JMenuItem deleteConnectionItem = new JMenuItem("Delete Connection");
@@ -207,6 +233,10 @@ public class WorkSpacePanel extends JPanel {
 		return popupMenu;
 	}
 
+	/**
+	 * Adds a WordBlock to the workspace panel and updates its display.
+	 * @param wordBlock The WordBlock to add.
+	 */
 	public void addWordBlock(WordBlock wordBlock) {
 		RoundRectangle2D roundRect = new RoundRectangle2D.Double(
 				wordBlock.getPosition().x, wordBlock.getPosition().y, 100, 50, 10, 10);
@@ -214,6 +244,12 @@ public class WorkSpacePanel extends JPanel {
 		repaint();
 	}
 
+	/**
+	 * Adds a WordBlock to the workspace panel at a specific coordinate and updates its display.
+	 * @param wordBlock The WordBlock to add.
+	 * @param x         The x-coordinate where the block will be placed.
+	 * @param y         The y-coordinate where the block will be placed.
+	 */
 	public void addWordBlock(WordBlock wordBlock, int x, int y) {
 		RoundRectangle2D roundRect = new RoundRectangle2D.Double(
 				x, y, 100, 50, 10, 10);
@@ -221,11 +257,18 @@ public class WorkSpacePanel extends JPanel {
 		repaint();
 	}
 
+	/**
+	 * Clears all WordBlocks from the workspace panel.
+	 */
 	public void clearWordBlocks() {
 		wordBlockShapes.clear();
 		repaint();
 	}
 
+	/**
+	 * Safely deletes a WordBlock from the workspace panel and updates its display.
+	 * @param toDelete The WordBlock to be deleted.
+	 */
 	protected void safeDeleteWordBlock(WordBlock toDelete) {
 		wordBlockShapes.remove(selectedWordBlock);
 		controller.deleteWordBlock(selectedWordBlock);
@@ -233,6 +276,10 @@ public class WorkSpacePanel extends JPanel {
 		repaint();
 	}
 
+	/**
+	 * Paints the components of the workspace panel, including word blocks and connections.
+	 * @param g The Graphics object to be used for painting.
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -284,6 +331,11 @@ public class WorkSpacePanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Calculates the center point of a given shape, usually a word block's bounding box.
+	 * @param shape The shape whose center point is to be calculated.
+	 * @return The center point of the shape.
+	 */
 	private Point getCenterPoint(Shape shape) {
 		Rectangle2D bounds = shape.getBounds2D();
 		int centerX = (int) bounds.getCenterX();

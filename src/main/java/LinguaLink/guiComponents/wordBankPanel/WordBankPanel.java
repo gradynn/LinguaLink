@@ -20,12 +20,18 @@ public class WordBankPanel extends JPanel {
 	private DefaultListModel<Word> wordListModel;
 	private JList<Word> wordList;
 
+	/**
+	 * Class Constructor for UI Component
+	 */
 	public WordBankPanel() {
 		this.controller = Controller.getInstance();
 		this.setLayout(new BorderLayout());
 		initializeUI();
 	}
 
+	/**
+	 * Performs Swing setup for sub panel representing the WordBank.
+	 */
 	private void initializeUI() {
 		JPanel inputPanel = new JPanel(new FlowLayout());
 		JTextField wordInput = new JTextField(20);
@@ -97,6 +103,11 @@ public class WordBankPanel extends JPanel {
 		this.add(splitPane, BorderLayout.CENTER);
 	}
 
+	/**
+	 * Method refreshes the contents of the WordBank UI component based on a passed list.
+	 * Enables synchronization with the Model.
+	 * @param words
+	 */
 	public void refreshWordBank(List<Word> words) {
 		wordListModel.clear();
 		for (Word word : words) {
@@ -104,6 +115,9 @@ public class WordBankPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Clears WordBank of all words. UI handler.
+	 */
 	public void clear() {
 		wordListModel.clear();
 	}

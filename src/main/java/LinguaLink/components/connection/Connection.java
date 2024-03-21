@@ -22,7 +22,7 @@ public class Connection {
 
     /**
      * Accessor for from WordBlock
-     * @return: final WordBlock
+     * @return final WordBlock
      */
     public WordBlock getFrom() {
         return from;
@@ -61,9 +61,9 @@ public class Connection {
     }
 
     /**
-     * Returns boolean representing whether a WordBlock is present in one of the connection's two WordBlocks.
-     * @param wordBlock
-     * @return
+     * Determine whether a WordBlock is present in one of the connection's two WordBlocks.
+     * @param wordBlock: WordBlock object to search connection for.
+     * @return boolean
      */
     public boolean contains(WordBlock wordBlock) {
         return (from == wordBlock || to == wordBlock);

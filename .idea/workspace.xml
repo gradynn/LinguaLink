@@ -6,16 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="d3c2c329-c93f-4653-8c9b-3bdbaf7b25b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/components/connection/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/components/connection/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/components/word/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/components/word/Word.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/ControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/ModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/ModelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/UtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/UtilTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/components/connection/ConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/components/connection/ConnectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/components/word/WordTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/components/word/WordTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/components/wordblock/WordBlockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/components/wordblock/WordBlockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/containers/wordbank/WordBankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/containers/wordbank/WordBankTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/containers/workSpace/WorkSpaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/containers/workSpace/WorkSpaceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/components/wordblock/WordBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/components/wordblock/WordBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/wordbank/WordBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/wordbank/WordBank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/workspace/WorkSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/containers/workspace/WorkSpace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/wordBankPanel/ComplexCellRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/wordBankPanel/ComplexCellRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/wordBankPanel/WordBankPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/wordBankPanel/WordBankPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/wordTransferable/WordTransferable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/wordTransferable/WordTransferable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/workSpacePanel/WorkSpacePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/guiComponents/workSpacePanel/WorkSpacePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +63,7 @@
     "JUnit.ModelTest.testAddObserver.executor": "Run",
     "JUnit.ModelTest.testAddWordToBank.executor": "Run",
     "JUnit.ModelTest.testSingletonBehavior.executor": "Run",
+    "JUnit.UtilTest.executor": "Run",
     "JUnit.WordBankTest.executor": "Run",
     "JUnit.WordBlockTest.executor": "Run",
     "JUnit.WordTest.executor": "Run",
@@ -185,7 +188,7 @@
       <workItem from="1710693390396" duration="12359000" />
       <workItem from="1710815500956" duration="8803000" />
       <workItem from="1710903860050" duration="4397000" />
-      <workItem from="1710989400257" duration="4025000" />
+      <workItem from="1710989400257" duration="6023000" />
     </task>
     <servers />
   </component>

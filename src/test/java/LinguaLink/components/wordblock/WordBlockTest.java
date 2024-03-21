@@ -2,60 +2,53 @@ package LinguaLink.components.wordblock;
 
 import LinguaLink.components.word.Word;
 import LinguaLink.components.word.PartOfSpeech;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
+import java.awt.Point;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WordBlockTest {
+public class WordBlockTest {
 
-    private WordBlock wordBlock;
-    private Word testWord;
-    private Point initialPosition;
+    @Test
+    public void testWordBlockConstructorAndGetters() {
+        Point testPoint = new Point(10, 20);
+        Word testWord = new Word("example", PartOfSpeech.NOUN);
+        WordBlock wordBlock = new WordBlock(testPoint, testWord);
 
-    @BeforeEach
-    void setUp() {
-        // Setup initial conditions for the tests
-        initialPosition = new Point(0, 0); // Assuming a Coordinate class with an appropriate constructor exists
-        testWord = new Word("test", PartOfSpeech.NOUN); // Assuming a Word class with an appropriate constructor exists
-        wordBlock = new WordBlock(initialPosition, testWord); // Assuming default or parameterized constructor exists
-
-        wordBlock.setPosition(initialPosition.x, initialPosition.y); // Setup initial position
-        // Assuming a method to set Word directly or via constructor exists
+        assertNotNull(wordBlock, "WordBlock object should not be null");
+        assertEquals(testPoint, wordBlock.getPosition(), "Position should match constructor argument");
+        assertEquals(testWord.getWord(), wordBlock.getWord().getWord(), "Word should match constructor argument");
+        assertEquals(testWord.getPartOfSpeech(), wordBlock.getWord().getPartOfSpeech(), "PartOfSpeech should match constructor argument");
     }
 
     @Test
-    @DisplayName("getPosition should return a new instance with the same x and y")
-    void testGetPosition() {
+    public void testSetPosition() {
+        WordBlock wordBlock = new WordBlock(new Point(5, 5), new Word("change", PartOfSpeech.VERB));
+        wordBlock.setPosition(15, 25);
+
+        assertEquals(15, wordBlock.getPosition().x, "X position should be updated");
+        assertEquals(25, wordBlock.getPosition().y, "Y position should be updated");
+    }
+
+    @Test
+    public void testGetPositionImmutability() {
+        Point initialPosition = new Point(30, 40);
+        WordBlock wordBlock = new WordBlock(initialPosition, new Word("immutable", PartOfSpeech.ADJECTIVE));
+
         Point position = wordBlock.getPosition();
-        assertAll(
-                () -> assertEquals(initialPosition.x, position.x, "X coordinate should match initial position"),
-                () -> assertEquals(initialPosition.y, position.y, "Y coordinate should match initial position")
-        );
+        position.translate(10, 10);  // Attempt to mutate the returned position
+
+        // The WordBlock's position should remain unchanged
+        assertNotEquals(position, wordBlock.getPosition(), "WordBlock's position should be immutable");
     }
 
     @Test
-    @DisplayName("getWord should return a copy of the Word")
-    void testGetWord() {
-        Word retrievedWord = wordBlock.getWord();
-        assertAll(
-                () -> assertEquals(testWord.getWord(), retrievedWord.getWord(), "Word text should match"),
-                () -> assertEquals(testWord.getPartOfSpeech(), retrievedWord.getPartOfSpeech(), "Part of speech should match")
-        );
-    }
+    public void testGetWordImmutability() {
+        Word initialWord = new Word("constant", PartOfSpeech.NOUN);
+        WordBlock wordBlock = new WordBlock(new Point(50, 60), initialWord);
 
-    @Test
-    @DisplayName("setPosition should update the WordBlock's position")
-    void testSetPosition() {
-        int newX = 5, newY = 10;
-        wordBlock.setPosition(newX, newY);
-        Point newPosition = wordBlock.getPosition();
-        assertAll(
-                () -> assertEquals(newX, newPosition.x, "X coordinate should be updated"),
-                () -> assertEquals(newY, newPosition.y, "Y coordinate should be updated")
-        );
+        Word word = wordBlock.getWord();
+        assertNotSame(initialWord, word, "Word should be a new instance");
     }
 }

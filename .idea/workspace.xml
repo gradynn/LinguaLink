@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c2c329-c93f-4653-8c9b-3bdbaf7b25b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/ControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/UtilTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/containers/workSpace/WorkSpaceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/components/connection/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/components/connection/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinguaLink/components/word/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinguaLink/components/word/Word.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/ControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/ModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/ModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/UtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/UtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/components/connection/ConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/components/connection/ConnectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/components/word/WordTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/components/word/WordTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/components/wordblock/WordBlockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/components/wordblock/WordBlockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/containers/wordbank/WordBankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/containers/wordbank/WordBankTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LinguaLink/containers/workSpace/WorkSpaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinguaLink/containers/workSpace/WorkSpaceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,40 +48,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppCopy.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LinguaLink.App.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ConnectionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CoordinateTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ModelTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ModelTest.testAddObserver.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ModelTest.testAddWordToBank.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ModelTest.testSingletonBehavior.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WordBlockTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/gradynnagle/School/ECS 160/Final Project/project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/gradynnagle/School/ECS 160/Final Project/project/src/main/java/org/example/Main.java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.App.executor": "Run",
+    "Application.AppCopy.executor": "Run",
+    "Application.LinguaLink.App.executor": "Run",
+    "JUnit.ConnectionTest.executor": "Run",
+    "JUnit.ControllerTest.executor": "Run",
+    "JUnit.CoordinateTest.executor": "Run",
+    "JUnit.ModelTest.executor": "Run",
+    "JUnit.ModelTest.testAddObserver.executor": "Run",
+    "JUnit.ModelTest.testAddWordToBank.executor": "Run",
+    "JUnit.ModelTest.testSingletonBehavior.executor": "Run",
+    "JUnit.WordBankTest.executor": "Run",
+    "JUnit.WordBlockTest.executor": "Run",
+    "JUnit.WordTest.executor": "Run",
+    "JUnit.WorkSpaceTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/gradynnagle/School/ECS 160/Final Project/project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/Users/gradynnagle/School/ECS 160/Final Project/project/src/main/java/org/example/Main.java",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LinguaLink.App">
+  <component name="RunManager">
     <configuration name="LinguaLink.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="LinguaLink.App" />
       <module name="project" />
@@ -175,7 +185,7 @@
       <workItem from="1710693390396" duration="12359000" />
       <workItem from="1710815500956" duration="8803000" />
       <workItem from="1710903860050" duration="4397000" />
-      <workItem from="1710989400257" duration="1254000" />
+      <workItem from="1710989400257" duration="4025000" />
     </task>
     <servers />
   </component>

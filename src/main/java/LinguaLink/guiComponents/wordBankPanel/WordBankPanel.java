@@ -91,9 +91,9 @@ public class WordBankPanel extends JPanel {
 		listScroller.setBorder(null);
 
 		JSplitPane splitPane = new JSplitPane(
-				JSplitPane.VERTICAL_SPLIT,
-				inputPanel,
-				listScroller);
+						JSplitPane.VERTICAL_SPLIT,
+						inputPanel,
+						listScroller);
 		splitPane.setResizeWeight(0.1);
 		splitPane.setDividerLocation(75);
 		splitPane.setOneTouchExpandable(false);

@@ -2,8 +2,8 @@ package LinguaLink.components.word;
 
 public class Word {
     public static Object PartOfSpeech;
-    private final String word;
-    private final PartOfSpeech pos;
+    private final String WORD;
+    private final PartOfSpeech PART_OF_SPEECH;
 
     /**
      * Construct
@@ -11,8 +11,8 @@ public class Word {
      * @param pos: PartOfSpeech enum representing the words enum.
      */
     public Word(String word, PartOfSpeech pos) {
-        this.word = word;
-        this.pos = pos;
+        this.WORD = word;
+        this.PART_OF_SPEECH = pos;
     }
 
     /**
@@ -20,7 +20,7 @@ public class Word {
      * @return string
      */
     public String getWord() {
-        return word;
+        return WORD;
     }
 
     /**
@@ -28,6 +28,6 @@ public class Word {
      * @return PartOfSpeech
      */
     public PartOfSpeech getPartOfSpeech() {
-        return pos;
+        return PART_OF_SPEECH;
     }
 }

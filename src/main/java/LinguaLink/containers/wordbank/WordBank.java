@@ -8,7 +8,7 @@ import java.util.List;
 
 public class WordBank {
     private static WordBank wordBank = null;
-    private final ArrayList<Word> words;
+    private ArrayList<Word> words;
 
     /**
      * Private Class Constructor for Singleton class.
@@ -53,7 +53,7 @@ public class WordBank {
     }
 
     /**
-     * Completely clears WordBank of all Words.
+     * Removes all words from WordBank.
      */
     public void clearWords() {
         words.clear();

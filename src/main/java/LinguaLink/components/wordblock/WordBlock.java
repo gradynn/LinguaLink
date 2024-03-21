@@ -5,7 +5,7 @@ import java.awt.Point;
 
 public class WordBlock {
     private Point position;
-    private Word word;
+    private final Word WORD;
 
     /**
      * Class Constructor
@@ -14,7 +14,7 @@ public class WordBlock {
      */
     public WordBlock(Point p, Word w) {
         this.position = p;
-        this.word = w;
+        this.WORD = w;
     }
 
     /**
@@ -30,7 +30,7 @@ public class WordBlock {
      * @return Word object.
      */
     public Word getWord() {
-        return new Word(this.word.getWord(), this.word.getPartOfSpeech());
+        return new Word(this.WORD.getWord(), this.WORD.getPartOfSpeech());
     }
 
     /**

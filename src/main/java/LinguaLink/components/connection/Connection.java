@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Connection {
-    private final WordBlock from;
-    private final WordBlock to;
+    private final WordBlock FROM;
+    private final WordBlock TO;
 
     /**
      * Constructor for class.
@@ -16,8 +16,8 @@ public class Connection {
      * @param to: a word block representing the destination word
      */
     public Connection(WordBlock from, WordBlock to) {
-        this.from = from;
-        this.to = to;
+        this.FROM = from;
+        this.TO = to;
     }
 
     /**
@@ -25,7 +25,7 @@ public class Connection {
      * @return final WordBlock
      */
     public WordBlock getFrom() {
-        return from;
+        return FROM;
     }
 
     /**
@@ -33,7 +33,7 @@ public class Connection {
      * @return final WordBlock
      */
     public WordBlock getTo() {
-        return to;
+        return TO;
     }
 
     /**
@@ -41,10 +41,16 @@ public class Connection {
      * @return boolean
      */
     public boolean isValid() {
-        PartOfSpeech fromPos = from.getWord().getPartOfSpeech();
-        PartOfSpeech toPos = to.getWord().getPartOfSpeech();
+        PartOfSpeech fromPos = FROM.getWord().getPartOfSpeech();
+        PartOfSpeech toPos = TO.getWord().getPartOfSpeech();
 
-        List<PartOfSpeech> places = Arrays.asList(PartOfSpeech.NOUN, PartOfSpeech.PRONOUN, PartOfSpeech.CONJUNCTION, PartOfSpeech.CONJUNCTION, PartOfSpeech.PREPOSITION, PartOfSpeech.ARTICLE);
+        List<PartOfSpeech> places = Arrays.asList(
+                PartOfSpeech.NOUN,
+                PartOfSpeech.PRONOUN,
+                PartOfSpeech.CONJUNCTION,
+                PartOfSpeech.CONJUNCTION,
+                PartOfSpeech.PREPOSITION,
+                PartOfSpeech.ARTICLE);
 
         if (fromPos == PartOfSpeech.NOUN && toPos == PartOfSpeech.ADJECTIVE) {
             return false;
@@ -66,6 +72,6 @@ public class Connection {
      * @return boolean
      */
     public boolean contains(WordBlock wordBlock) {
-        return (from == wordBlock || to == wordBlock);
+        return (FROM == wordBlock || TO == wordBlock);
     }
 }

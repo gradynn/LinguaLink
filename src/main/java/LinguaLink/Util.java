@@ -74,7 +74,9 @@ public class Util {
 		// 2. Open a file chooser to let the user select the save location
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle("Save as PNG");
-		fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("PNG Image", "png"));
+		fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
+						"PNG Image",
+						"png"));
 
 		int userSelection = fileChooser.showSaveDialog(panel);
 
@@ -90,9 +92,15 @@ public class Util {
 			// 3. Write the image to the selected file
 			try {
 				ImageIO.write(image, "PNG", fileToSave);
-				JOptionPane.showMessageDialog(panel, "Saved image to: " + fileToSave.getAbsolutePath(), "Image Saved Successfully", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(panel,
+								"Saved image to: " + fileToSave.getAbsolutePath(),
+								"Image Saved Successfully",
+								JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(panel, "Error saving image: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(panel,
+								"Error saving image: " + ex.getMessage(),
+								"Error",
+								JOptionPane.ERROR_MESSAGE);
 				ex.printStackTrace();
 			}
 		}
@@ -120,7 +128,9 @@ public class Util {
 					writer.write("WordBank:" + word.getWord() + "," + word.getPartOfSpeech() + "\n");
 				}
 				for (WordBlock block : workSpace) {
-					writer.write("WorkSpace:" + block.getWord().getWord() + "," + block.getWord().getPartOfSpeech() + "," + block.getPosition().x + "," + block.getPosition().y + "\n");
+					writer.write(
+									"WorkSpace:" + block.getWord().getWord() + "," + block.getWord().getPartOfSpeech() +
+													"," + block.getPosition().x + "," + block.getPosition().y + "\n");
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -134,7 +144,9 @@ public class Util {
 	 */
 	public static void loadApplicationState(Model model) {
 		JFileChooser fileChooser = new JFileChooser();
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("LinguaLink WorkSpace Files (*.llws)", "llws");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(
+						"LinguaLink WorkSpace Files (*.llws)",
+						"llws");
 		fileChooser.setFileFilter(filter);
 		fileChooser.setDialogTitle("Open Work Space");
 
@@ -144,7 +156,10 @@ public class Util {
 		if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 			File file = fileChooser.getSelectedFile();
 			if (!file.getPath().toLowerCase().endsWith(".llws")) {
-				JOptionPane.showMessageDialog(null, "Invalid file type selected. Please select a .llws file.", "Invalid File Type", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,
+								"Invalid file type selected. Please select a .llws file.",
+								"Invalid File Type",
+								JOptionPane.ERROR_MESSAGE);
 				return; // Return empty lists if file type is incorrect
 			}
 

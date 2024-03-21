@@ -47,7 +47,9 @@ public class Controller {
      */
     public void addConnection(Connection c) {
         model.addConnection(c);
-        Logger.info("Connection from " + c.getFrom().getWord().getWord() + " to " + c.getTo().getWord().getWord() + ".");
+        Logger.info(
+                "Connection from " + c.getFrom().getWord().getWord() + " to " + c.getTo().getWord().getWord() + "."
+        );
     }
 
     /**
@@ -77,7 +79,10 @@ public class Controller {
             Logger.info("Word " + toMove.getWord() + " moved to work space.");
             return createdWordBlock;
         } catch (NonExistentWordException e) {
-            Logger.error("Cannot move word to work space from word bank. Word " + toMove.getWord() + " does not exist in word bank.");
+            Logger.error(
+                    "Cannot move word to work space from word bank. Word " +
+                            toMove.getWord() + " does not exist in word bank."
+            );
             throw new RuntimeException(e);
         }
     }
@@ -95,7 +100,10 @@ public class Controller {
             Logger.info("Word " + toMove.getWord() + " moved to work space.");
             return createdWordBlock;
         } catch (NonExistentWordException e) {
-            Logger.error("Cannot move word to work space from word bank. Word " + toMove.getWord() + " does not exist in word bank.");
+            Logger.error(
+                    "Cannot move word to work space from word bank. Word " +
+                            toMove.getWord() + " does not exist in word bank."
+            );
             throw new RuntimeException(e);
         }
     }
@@ -108,9 +116,9 @@ public class Controller {
         try {
             model.moveWordToWordBank(toMove);
         } catch (NonExistentWordBlockException e) {
-			throw new RuntimeException(e);
-		}
-		Logger.info("Word " + toMove.getWord().getWord() + " moved to word bank.");
+            throw new RuntimeException(e);
+        }
+        Logger.info("Word " + toMove.getWord().getWord() + " moved to word bank.");
     }
 
     /**

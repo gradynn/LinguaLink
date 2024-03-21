@@ -114,13 +114,15 @@ public class WorkSpacePanel extends JPanel {
 						clickedOnBlock = true;
 						lastDragPoint = e.getPoint(); // Set initial drag point
 
-					    if (SwingUtilities.isRightMouseButton(e)) {
+						if (SwingUtilities.isRightMouseButton(e)) {
 							selectedWordBlock = clickedBlock; // Update the selected block on right-click
 							createPopupMenu().show(WorkSpacePanel.this, e.getX(), e.getY());
 						} else if (SwingUtilities.isLeftMouseButton(e)) {
 							if (e.getClickCount() == 2) {
 								controller.moveWordToWordBank(clickedBlock);
-							} else if (e.isShiftDown() && firstSelectedBlock != null && clickedBlock != firstSelectedBlock) {
+							} else if (e.isShiftDown() &&
+											firstSelectedBlock != null &&
+											clickedBlock != firstSelectedBlock) {
 								controller.addConnection(new Connection(firstSelectedBlock, clickedBlock));
 								firstSelectedBlock = null; // Reset for the next connection
 							} else {
@@ -239,7 +241,7 @@ public class WorkSpacePanel extends JPanel {
 	 */
 	public void addWordBlock(WordBlock wordBlock) {
 		RoundRectangle2D roundRect = new RoundRectangle2D.Double(
-				wordBlock.getPosition().x, wordBlock.getPosition().y, 100, 50, 10, 10);
+						wordBlock.getPosition().x, wordBlock.getPosition().y, 100, 50, 10, 10);
 		wordBlockShapes.put(wordBlock, roundRect);
 		repaint();
 	}
@@ -252,7 +254,7 @@ public class WorkSpacePanel extends JPanel {
 	 */
 	public void addWordBlock(WordBlock wordBlock, int x, int y) {
 		RoundRectangle2D roundRect = new RoundRectangle2D.Double(
-				x, y, 100, 50, 10, 10);
+						x, y, 100, 50, 10, 10);
 		wordBlockShapes.put(wordBlock, roundRect);
 		repaint();
 	}
@@ -294,7 +296,7 @@ public class WorkSpacePanel extends JPanel {
 			if (conn == selectedConnection){
 				g2.setStroke(new BasicStroke(10.0f));
 				g2.setColor(Color.BLUE);
-		    } else if (conn.isValid()) {
+			} else if (conn.isValid()) {
 				g2.setStroke(new BasicStroke(5.0f));
 				g2.setColor(Color.BLACK);
 			} else {
@@ -318,8 +320,16 @@ public class WorkSpacePanel extends JPanel {
 
 			// Draw text inside the shape
 			g2.setColor(Util.getPrimaryTextColor(wordBlock.getWord().getPartOfSpeech()));
-			g2.drawString(wordBlock.getWord().getWord(), (float) shape.getBounds().getX() + 5, (float) shape.getBounds().getY() + 20);
-			g2.drawString(wordBlock.getWord().getPartOfSpeech().toString(), (float) shape.getBounds().getX() + 5, (float) shape.getBounds().getY() + 40);
+			g2.drawString(
+							wordBlock.getWord().getWord(),
+							(float) shape.getBounds().getX() + 5,
+							(float) shape.getBounds().getY() + 20
+			);
+			g2.drawString(
+							wordBlock.getWord().getPartOfSpeech().toString(),
+							(float) shape.getBounds().getX() + 5,
+							(float) shape.getBounds().getY() + 40
+			);
 
 			// Highlight if selected
 			if (wordBlock == selectedWordBlock) {

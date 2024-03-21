@@ -151,6 +151,14 @@ public class Controller {
     }
 
     /**
+     * Deletes a Word from the word bank.
+     * @param toDelete The word to delete from word bank.
+     */
+    public void deleteWord(Word toDelete) {
+        model.deleteWord(toDelete);
+    }
+
+    /**
      * Deletes a connection between two word blocks.
      * @param toDelete The connection to delete.
      */

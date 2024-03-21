@@ -77,7 +77,14 @@ public class WordBankPanel extends JPanel {
 		wordList.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (e.getClickCount() == 2) {
+				if (SwingUtilities.isRightMouseButton(e)) {
+					int index = wordList.locationToIndex(e.getPoint());
+					wordList.setSelectedIndex(index);  // Select the item under the mouse pointer
+					if (index >= 0) {
+						JPopupMenu popupMenu = createPopupMenu();
+						popupMenu.show(e.getComponent(), e.getX(), e.getY());
+					}
+				} else if (e.getClickCount() == 2) {
 					int index = wordList.locationToIndex(e.getPoint());
 					if (index >= 0) {
 						Word selectedWord = wordList.getModel().getElementAt(index);
@@ -101,6 +108,20 @@ public class WordBankPanel extends JPanel {
 		splitPane.setDividerSize(0);
 
 		this.add(splitPane, BorderLayout.CENTER);
+	}
+
+	private JPopupMenu createPopupMenu() {
+		JPopupMenu popupMenu = new JPopupMenu();
+		JMenuItem deleteItem = new JMenuItem("Delete");
+		deleteItem.addActionListener(e -> {
+			Word selectedWord = wordList.getSelectedValue();
+			if (selectedWord != null) {
+				controller.deleteWord(selectedWord);
+				wordListModel.removeElement(selectedWord);
+			}
+		});
+		popupMenu.add(deleteItem);
+		return popupMenu;
 	}
 
 	/**

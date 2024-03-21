@@ -163,6 +163,7 @@ public class Model {
      */
     public void addConnection(Connection toAdd) {
         workSpace.addConnection(toAdd);
+        notifyObservers();
     }
 
     /**
@@ -171,6 +172,15 @@ public class Model {
      */
     public void deleteConnection(Connection toDelete) {
         workSpace.removeConnection(toDelete);
+        notifyObservers();
+    }
+
+    /**
+     * Deletes a word from the Word Bank.
+     * @param toDelete a Word to be deleted.
+     */
+    public void deleteWord(Word toDelete) {
+        wordBank.removeWord(toDelete);
         notifyObservers();
     }
 

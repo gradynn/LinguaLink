@@ -31,11 +31,30 @@ public class App extends JFrame implements ModelObserver {
     }
 
     private void initUI() {
+        // Get the screen size and determine the maximum allowable size
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = Math.min(screenSize.width, 1920);
+        int height = Math.min(screenSize.height, 1080);
+
+        // Suggest a preferred size for the window
+        setPreferredSize(new Dimension(width, height));
+
+        // Set the maximum size to prevent exceeding 1920x1080 or the screen size
+        setMaximumSize(new Dimension(width, height));
+
+        // Pack the frame to respect preferred size
+        pack();
+
+        // Set default close operation
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Center the window
+        setLocationRelativeTo(null);
+
         setupMenuBar();
         setupMainAndSideLayout();
-        setSize(1920, 1080);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
 
     private void setupMenuBar() {
         JMenuBar menuBar = new JMenuBar();
@@ -80,31 +99,29 @@ public class App extends JFrame implements ModelObserver {
         setJMenuBar(menuBar);
     }
 
-    private JPanel constructWordBank() {
-        WordBankPanel wordBankPanel = new WordBankPanel();
-        return wordBankPanel;
+    private void constructWordBank() {
+        wordBankPanel = new WordBankPanel();
     }
 
-    private JPanel constructWorkSpace() {
-        WorkSpacePanel workSpacePanel = new WorkSpacePanel();
+    private void constructWorkSpace() {
+        workSpacePanel = new WorkSpacePanel();
 
         for (WordBlock wordBlock : model.getWorkSpaceWordBlocks()) {
             workSpacePanel.addWordBlock(wordBlock);
         }
-
-        return workSpacePanel;
     }
 
     private void setupMainAndSideLayout() {
-        wordBankPanel = (WordBankPanel) constructWordBank();
-        workSpacePanel = (WorkSpacePanel) constructWorkSpace();
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, workSpacePanel, wordBankPanel);
-        splitPane.setSize(1920, 1080);
-        splitPane.setDividerLocation(0.8);
-        splitPane.setOneTouchExpandable(false); // Disable the one-touch expandable buttons
-        splitPane.setEnabled(false); // Disable the divider so it can't be moved
-        splitPane.setDividerSize(0);
+        // Initialize the panels
+        constructWordBank();
+        constructWorkSpace();
 
+        // Create a split pane that divides the workspace and the word bank
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, workSpacePanel, wordBankPanel);
+        splitPane.setOneTouchExpandable(true);
+        splitPane.setResizeWeight(1); // Give more space to the workspace initially, adjust as necessary
+
+        // Adding the split pane to the frame's content pane
         getContentPane().add(splitPane, BorderLayout.CENTER);
     }
 
